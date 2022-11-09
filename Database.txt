@@ -1,0 +1,9 @@
+Primary Data Types:
+INT 
+Double(x, d)
+Varchar(x)
+Bit
+DateTime
+YYYY-MM-DD
+HH:MM:SS
+Page 144

@@ -1,0 +1,61 @@
+USE assign2;
+
+CREATE TABLE tbl_device(
+
+device_id INT NOT NULL,
+device_type varchar(10) NOT NULL,
+
+device_loc varchar(20) NOT NULL,
+
+CONSTRAINT PRIMARY KEY(device_id)
+
+);
+
+
+CREATE TABLE tbl_reading(
+
+read_id INT NOT NULL,
+
+reading varchar(50) NOT NULL,
+
+CONSTRAINT PRIMARY KEY(read_id)
+
+);
+
+
+CREATE TABLE tbl_data(
+
+device_id INT NOT NULL,
+
+read_id INT NOT NULL,
+data_time varchar(10),
+
+CONSTRAINT PRIMARY KEY(device_id, read_id),
+
+CONSTRAINT FOREIGN KEY(device_id) REFERENCES tbl_device(device_id),
+
+CONSTRAINT FOREIGN KEY(read_id) REFERENCES tbl_reading(read_id)
+);
+
+INSERT INTO tbl_device(device_id, device_type, device_loc) VALUES
+(1, 'light', 'hall'), (2, 'thermostat', 'hall'), (3, 'light', 'kitchen'), (4, 'lamp', 'living room');
+
+INSERT INTO tbl_reading(read_id, reading) VALUES
+(1, 'brightness- 0.1'), (2, 'brightness - .02'), (3, 'brightness - .03'),
+(4, 'brightness - .04'), (5, 'brightness - 1.0'), (6, 'brightness - .96'),
+(7, 'humidity - .75 temperature - 72.34'), (8, 'humidity - .755  temperature - 72.35'),
+(9, 'humidity - .75   temperature - 72.34'), (10, 'humidity - .755  temperature - 72.35'),
+(11, 'humidity - .81  temperature - 72.3'), (12, 'humidity - .75   temperature - 72.37'),
+(13, 'humidity - .75   temperature - 72.2'), (14, 'humidity - .9   temperature - 72.59'),
+(15, 'brightness - 1.0'), (16, 'brightness - .96'), (17, 'brightness - .02'), (18, 'brightness - .03'),
+(19, 'brightness - .04'), (20, 'brightness - .96'), (21, 'color - white on - 0'),
+(22, 'color - white on - 1'), (23, 'color - white on - 0'), (24, 'color - white on - 0'),
+(25, 'color - blue on - 1'), (26, 'color - blue on - 0');
+
+INSERT INTO tbl_data(device_id, read_id, data_time) VALUES
+(1, 1, '11:34'), (1,2,'12:34'),
+(1, 3, '13:34'), (1,4,'14:34'), (1, 5, '15:34'),(1,6,'16:34'), (2, 7, '11:34'),(2, 8, '12:34'),
+
+(3,16,'14:34'),(3,	17,	'15:34'),(3,	18,	'16:34'),(4,	19,	'11:34'),
+(4,	20,	'12:34'),(4,	21,	'13:34'),(4,	22,	'14:34'),(4,	23,	'15:34'),(4, 24,	'16:34');
+
